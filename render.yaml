@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: student-assignment-manager
+    runtime: node
+    plan: free
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+    # To preserve JSON data across deploys, use a paid plan and uncomment:
+    # plan: starter
+    # disk:
+    #   name: assignment-data
+    #   mountPath: /var/data
+    #   sizeGB: 1
+    # envVars:
+    #   - key: DATA_FILE
+    #     value: /var/data/data.json
+    #   - key: ACTIVITY_FILE
+    #     value: /var/data/activity.log
